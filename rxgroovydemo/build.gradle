@@ -1,0 +1,37 @@
+buildscript {
+    ext {
+        springBootVersion = '1.2.2.RELEASE'
+    }
+    dependencies {
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:$springBootVersion"
+    }
+    repositories {
+        jcenter()
+    }
+}
+
+apply plugin: 'groovy'
+apply plugin: 'idea'
+apply plugin: 'spring-boot'
+
+sourceCompatibility = targetCompatibility = 1.8
+
+run {
+    main = 'pember.rxgroovydemo.Application'
+}
+
+bootRepackage {
+    mainClass = 'pember.rxgroovydemo.Application'
+}
+
+repositories {
+    mavenLocal()
+    jcenter()
+}
+
+dependencies {
+    compile "org.springframework.boot:spring-boot-starter-web:$springBootVersion"
+    compile 'org.codehaus.groovy:groovy-all:2.4.3'
+    compile 'io.reactivex:rxgroovy:1.0.0'
+
+}

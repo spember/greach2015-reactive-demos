@@ -1,0 +1,46 @@
+import org.springframework.boot.gradle.run.BootRunTask
+
+buildscript {
+    ext {
+        springBootVersion = '1.2.1.RELEASE'
+    }
+    dependencies {
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:$springBootVersion"
+    }
+    repositories {
+        jcenter()
+    }
+}
+
+apply plugin: 'groovy'
+apply plugin: 'idea'
+apply plugin: 'spring-boot'
+
+sourceCompatibility = targetCompatibility = 1.7
+
+
+idea {
+    module {
+        inheritOutputDirs = false
+        outputDir = file("$buildDir/classes/main")
+    }
+}
+
+run {
+    main = 'pember.akka.Application'
+}
+
+bootRepackage {
+    mainClass = 'pember.akka.Application'
+}
+
+repositories {
+    mavenLocal()
+    jcenter()
+}
+
+dependencies {
+    compile "org.springframework.boot:spring-boot-starter-web:$springBootVersion"
+    compile 'org.codehaus.groovy:groovy-all:2.3.9'
+    compile 'com.typesafe.akka:akka-actor_2.10:2.3.9'
+}
