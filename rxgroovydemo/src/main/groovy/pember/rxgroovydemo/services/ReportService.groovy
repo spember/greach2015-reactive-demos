@@ -34,11 +34,11 @@ class ReportService {
 
         // also, let's suppose we really want to watch for Sprocket sales
 
-//        salesService.salesStream
-//        .subscribeOn(Schedulers.computation())
-//        .filter({SalesEvent event-> event.widget.type == WidgetType.SPROCKET})
-//        .subscribe({SalesEvent event ->
-//            log.info("Whoop! Just sold some sprockets!")
-//        })
+        salesService.salesStream
+        .subscribeOn(Schedulers.io())
+        .filter({SalesEvent event-> event.widget.type == WidgetType.SPROCKET})
+        .subscribe({SalesEvent event ->
+            log.info("Whoop! Just sold some sprockets!")
+        })
     }
 }

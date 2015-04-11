@@ -29,7 +29,7 @@ class WidgetFactoryService {
                     number: it,
                     sku: "${type.id}-${it}",
                     priceInCents: r.nextInt(20000),
-                    inventory: r.nextInt(999)+1,
+                    inventory: r.nextInt(20)+1,
                     unitsSold: 0
             )
             widgets << widget
@@ -53,7 +53,6 @@ class WidgetFactoryService {
      * @return An Observable emitting a single Map summary of the Inventory
      */
     Observable getTotalInventoryReport() {
-        //Observable.from(widgets)
         getObservableWidgets()
             .groupBy({Widget w -> w.type})
             .flatMap({group ->

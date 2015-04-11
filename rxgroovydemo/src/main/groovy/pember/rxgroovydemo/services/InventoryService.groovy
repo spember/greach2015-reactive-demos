@@ -33,7 +33,6 @@ class InventoryService {
         // branch one... filter results and buffer into chunks for persistence
         branch
         .filter({SalesEvent event -> event.widget.inventory >= event.quantity})
-        //.subscribeOn(Schedulers.newThread())
         .buffer(10)
         .subscribe({List<SalesEvent> events ->
             log.info("Recording sales")

@@ -68,6 +68,10 @@ class MainController {
                 total.totalCents += widget.unitsSold * widget.priceInCents
                 total
             })
+            .map({data ->
+                data.usd = '$'+(data.totalCents/100)
+                data
+            })
             .map({total -> [(group.getKey()): total]})
         })
         .reduce([:], {acc, item -> acc += item})

@@ -38,7 +38,5 @@ class SalesService {
 
     Observable getSalesStream() {
         stream
-        .onBackpressureBuffer()
-        .observeOn(Schedulers.computation())
     }
 }
